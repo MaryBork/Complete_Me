@@ -5,7 +5,9 @@ class CompleteMe
   def initialize
     @words = []
     @found_word = []
-    @dictionary = File.read("/usr/share/dict/words")
+    @populated = []
+    @dictionary = dictionary
+
 
   end
 
@@ -27,8 +29,11 @@ class CompleteMe
   end
 
   # def populate(dictionary)
-  #   dictionary = @dictionary.split('\n')
-  #   insert(dictionary)
-  # end 
+  #   split = dictionary.split("\n")
+  #     split.map do |word|
+  #       @populate << word
+  #     end
+  #
+  # end
 
 end

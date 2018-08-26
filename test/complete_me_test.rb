@@ -2,6 +2,9 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
 require './lib/complete_me.rb'
+require 'simplecov'
+SimpleCov.start
+
 
 class CompleteMeTest < Minitest::Test
 
@@ -29,11 +32,17 @@ class CompleteMeTest < Minitest::Test
     assert_equal (["pizza"]), completion.suggest("piz")
   end
 
-  # def test_dictionary
+  def test_populate
+    completion = CompleteMe.new
+    completion.populate(dictionary = File.read("/usr/share/dict/words"))
+    assert_equal 235886, completion.count
+  end
+
+  # def test_suggestion_from_dictionary
   #   completion = CompleteMe.new
-  #   completion.populate(dictionary)
-  #   assert_equal 235886, completion.count
+  #   completion.populate(File.read("/usr/share/dict/words"))
+  #   completion.insert("pizza")
+  #   expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
+  #   assert_equal expected, completion.suggest("piz")
   # end
-
-
 end

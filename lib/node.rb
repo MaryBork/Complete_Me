@@ -22,6 +22,3 @@ class Node
     @word
   end
 end
-
-
-
