@@ -1,13 +1,14 @@
 
 class Node
   attr_reader :value,
-              :children
-  attr_accessor :word
+              :children,
+              :child
+  attr_accessor :complete_word
 
-  def initialize(value, word = false)
+  def initialize(value, complete_word = false)
     @value = value
-    @word = word
     @children = Hash.new(nil)
+    @complete_word = complete_word
   end
 
   def set_children(value, node)
@@ -18,8 +19,8 @@ class Node
     children[key.to_sym]
   end
 
-  def word?
-    @word
+  def complete_word?
+    @complete_word
   end
 end
 
