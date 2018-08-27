@@ -4,11 +4,6 @@ require './lib/complete_me'
 require './lib/node'
 require 'simplecov'
 require 'pry'
-<<<<<<< HEAD
-require './lib/complete_me.rb'
-require 'simplecov'
-=======
->>>>>>> d80f3f4ab48b6249d6759dc862c716e013875b25
 SimpleCov.start
 
 
@@ -43,8 +38,7 @@ class CompleteMeTest < Minitest::Test
     assert_equal 0, complete_me.selections[:letter][:letter]
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   def test_populate
     completion = CompleteMe.new
     completion.populate(dictionary = File.read("/usr/share/dict/words"))
@@ -58,19 +52,19 @@ class CompleteMeTest < Minitest::Test
   #   expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
   #   assert_equal expected, completion.suggest("piz")
   # end
-=======
-  def test_insert
-=======
+
+  #def test_insert
+
   def test_real_insert
->>>>>>> c8318cc9c856b1c32f8acd73b319ac10d22e8dce
-  
+
+
     complete_me = CompleteMe.new
     complete_me.insert("pizza")
-   
+
     leaf = complete_me.root.child("p").child("i").child("z").child("z").child("a")
 
     assert_instance_of Node, leaf
-    
+
     assert leaf.complete_word?
     empty_children = {}
 
@@ -94,7 +88,5 @@ class CompleteMeTest < Minitest::Test
     assert_equal expected, complete_me.suggest("piz")
   end
 
->>>>>>> d80f3f4ab48b6249d6759dc862c716e013875b25
-end
 
- 
+end
