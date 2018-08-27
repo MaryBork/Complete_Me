@@ -48,20 +48,20 @@ class NodeTest < Minitest::Test
   def test_is_not_word_node_by_default
     
     node = Node.new("a")
-    refute node.word?
+    refute node.complete_word?
   end
 
   def test_can_be_created_as_word_node
     
     node = Node.new("a", true)
-    assert node.word?
+    assert node.complete_word?
   end
 
   def test_non_word_node_can_be_set_as_word_node
-    skip
+  
     node = Node.new("a")
-    node.word = true
-    assert node.word?
+    node.complete_word = true
+    assert node.complete_word?
   end
 end
 
