@@ -8,18 +8,18 @@ SimpleCov.start
 
 
 class CompleteMeTest < Minitest::Test
-  def setup
-    @complete_me = CompleteMe.new
-    @complete_me.insert("pizza")
-    @complete_me.insert("pize")
-    @complete_me.insert("pizzapizza")
-    @complete_me.insert("pizzicato")
-    @complete_me.insert("pizzle")
-  end
 
   def test_it_exists
-    assert_instance_of CompleteMe, @complete_me
+    complete_me = CompleteMe.new
+    assert_instance_of CompleteMe, complete_me
   end
+
+  # def test_simple_insert
+  #   complete_me = CompleteMe.new
+
+  #   complete_me.insert("pizza")
+  #   assert_equal 1, complete_me.count
+  # end
 
   def test_it_has_empty_root
     complete_me = CompleteMe.new
@@ -37,7 +37,7 @@ class CompleteMeTest < Minitest::Test
     assert_equal 0, complete_me.selections[:letter][:letter]
   end
 
-  def test_insert
+  def test_real_insert
   
     complete_me = CompleteMe.new
     complete_me.insert("pizza")
@@ -58,7 +58,6 @@ class CompleteMeTest < Minitest::Test
     complete_me.populate(dictionary)
 
     assert_equal 235886, complete_me.count
-    
   end
 
 end

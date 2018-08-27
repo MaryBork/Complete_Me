@@ -12,7 +12,10 @@ class CompleteMe
   end
 
   def insert(complete_word, current = @root)
+    @whole_words = []
+    @whole_words << complete_word
     first_letter = complete_word[0]
+    
     complete_word[0] = ("")
     next_node = current.child(first_letter)
       if 
@@ -35,7 +38,7 @@ class CompleteMe
     end
   end 
 
-    def count(current_node = @root)
-      @words.count
-    end
+  def count(current_node = @root)
+    @whole_words.count && @words.count
+  end
 end
