@@ -15,6 +15,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_simple_insert
+    skip
     complete_me = CompleteMe.new
 
     complete_me.insert("pizza")
@@ -58,6 +59,15 @@ class CompleteMeTest < Minitest::Test
     complete_me.populate(dictionary)
 
     assert_equal 235886, complete_me.count
+  end
+
+  def test_suggest
+    complete_me = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    complete_me.populate(dictionary)
+    expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
+
+    assert_equal expected, complete_me.suggest("piz")
   end
 
 end

@@ -41,4 +41,13 @@ class CompleteMe
   def count(current_node = @root)
     @whole_words.count && @words.count
   end
+
+  def suggest(prefix)
+    prefix.length
+
+    suggested = @words.keep_if do |word|
+      word[0..2].include?(prefix)
+    end
+    suggested
+  end
 end
