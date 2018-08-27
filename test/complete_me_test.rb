@@ -14,12 +14,12 @@ class CompleteMeTest < Minitest::Test
     assert_instance_of CompleteMe, complete_me
   end
 
-  # def test_simple_insert
-  #   complete_me = CompleteMe.new
+  def test_simple_insert
+    complete_me = CompleteMe.new
 
-  #   complete_me.insert("pizza")
-  #   assert_equal 1, complete_me.count
-  # end
+    complete_me.insert("pizza")
+    assert_equal 1, complete_me.count
+  end
 
   def test_it_has_empty_root
     complete_me = CompleteMe.new
@@ -52,7 +52,7 @@ class CompleteMeTest < Minitest::Test
     assert_equal empty_children, leaf.children
   end
 
-  def test_count
+  def test_dictionary_count
     complete_me = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     complete_me.populate(dictionary)
