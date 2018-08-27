@@ -56,7 +56,7 @@ class CompleteMeTest < Minitest::Test
     complete_me = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     complete_me.populate(dictionary)
-    binding.pry
+
     assert_equal 235886, complete_me.count
     
   end
