@@ -43,10 +43,9 @@ class CompleteMe
   end
 
   def suggest(prefix)
-    prefix.length
-
+    limiter = (prefix.length) -1
     suggested = @words.keep_if do |word|
-      word[0..2].include?(prefix)
+      word[0..limiter].include?(prefix)
     end
     suggested
   end
