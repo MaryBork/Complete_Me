@@ -12,10 +12,16 @@ class CompleteMe
   end
 
   def insert(complete_word, current = @root)
+    @whole_words = []
+    @whole_words << complete_word
     first_letter = complete_word[0]
+    
     complete_word[0] = ("")
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c8318cc9c856b1c32f8acd73b319ac10d22e8dce
     next_node = current.child(first_letter)
       if
         next_node == nil
@@ -29,6 +35,7 @@ class CompleteMe
       end
     insert(complete_word, next_node)
   end
+<<<<<<< HEAD
 
   def include?(word)
     @complete_word
@@ -51,13 +58,25 @@ class CompleteMe
   #      end
   #    end
   # end
+=======
+>>>>>>> c8318cc9c856b1c32f8acd73b319ac10d22e8dce
 
   def populate(dictionary)
-     bingo = dictionary.split("\n")
-      bingo.map do |word|
+     @words = dictionary.split("\n")
+      @words.map do |word|
       insert(word.chomp)
-      binding.pry
     end
   end
 
+  def count(current_node = @root)
+    @whole_words.count && @words.count
+  end
+
+  def suggest(prefix)
+    limiter = (prefix.length) -1
+    suggested = @words.keep_if do |word|
+      word[0..limiter].include?(prefix)
+    end
+    suggested
+  end
 end

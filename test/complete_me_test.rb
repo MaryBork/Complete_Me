@@ -13,17 +13,18 @@ SimpleCov.start
 
 
 class CompleteMeTest < Minitest::Test
-  def setup
-    @complete_me = CompleteMe.new
-    @complete_me.insert("pizza")
-    @complete_me.insert("pize")
-    @complete_me.insert("pizzapizza")
-    @complete_me.insert("pizzicato")
-    @complete_me.insert("pizzle")
-  end
 
   def test_it_exists
-    assert_instance_of CompleteMe, @complete_me
+    complete_me = CompleteMe.new
+    assert_instance_of CompleteMe, complete_me
+  end
+
+  def test_simple_insert
+    skip
+    complete_me = CompleteMe.new
+
+    complete_me.insert("pizza")
+    assert_equal 1, complete_me.count
   end
 
   def test_it_has_empty_root
@@ -43,6 +44,7 @@ class CompleteMeTest < Minitest::Test
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   def test_populate
     completion = CompleteMe.new
     completion.populate(dictionary = File.read("/usr/share/dict/words"))
@@ -58,6 +60,9 @@ class CompleteMeTest < Minitest::Test
   # end
 =======
   def test_insert
+=======
+  def test_real_insert
+>>>>>>> c8318cc9c856b1c32f8acd73b319ac10d22e8dce
   
     complete_me = CompleteMe.new
     complete_me.insert("pizza")
@@ -72,13 +77,21 @@ class CompleteMeTest < Minitest::Test
     assert_equal empty_children, leaf.children
   end
 
-  def test_count
+  def test_dictionary_count
     complete_me = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     complete_me.populate(dictionary)
-    binding.pry
+
     assert_equal 235886, complete_me.count
-    
+  end
+
+  def test_suggest
+    complete_me = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    complete_me.populate(dictionary)
+    expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
+
+    assert_equal expected, complete_me.suggest("piz")
   end
 
 >>>>>>> d80f3f4ab48b6249d6759dc862c716e013875b25
