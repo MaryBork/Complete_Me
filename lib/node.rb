@@ -30,3 +30,9 @@ class Node
   #Returns the boolean value assigned
   #to the node attribute complete_word
 end
+<<<<<<< HEAD
+=======
+
+
+# @root.child(:p).child(:i).child(:z).child(:z).child(:a)
+>>>>>>> 8b673b1aa1c7997e7d1da5131874b79846d670d9

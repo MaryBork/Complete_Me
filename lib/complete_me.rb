@@ -18,9 +18,13 @@ class CompleteMe
 #the first key is a word prefix, the second key is
 #a chosen complete word and the value is a weight integer
 
+<<<<<<< HEAD
   def insert(complete_word, current=@root)
     @whole_words = []
     @whole_words << complete_word
+=======
+  def insert(complete_word, current = @root)
+>>>>>>> 8b673b1aa1c7997e7d1da5131874b79846d670d9
     first_letter = complete_word[0]
     complete_word[0] = ("")
     next_node = current.child(first_letter)
@@ -65,12 +69,36 @@ end
       @words.map do |word|
       insert(word.chomp)
     end
+<<<<<<< HEAD
+=======
+  end 
+
+  def count(current_node = @root)
+    number_of_valid_words = current_node.children.inject(0) do |total, (char, child_node)|
+      total + count(child_node)
+      end
+    return number_of_valid_words + 1 if current_node.complete_word?
+    return number_of_valid_words
+  end
+
+  def traverse
+    #   word = prefix.to_s.join 
+    #   current_node = @root
+    # until @child.complete_word == true 
+    #   word += current_node.value  
+    #   current_node = current_node.next_node 
+    #   return word 
+    #   traverse 
+    
+>>>>>>> 8b673b1aa1c7997e7d1da5131874b79846d670d9
   end
 #Takes a file in as an argument then splits the file up at the newline characters
 #creating an array of individual strings, then inserts(using #insert) each character of each string into
 #our retrieval tree as instances of Node
 
+
   def suggest(prefix)
+<<<<<<< HEAD
     node_path = [] << current_node
     return nil if current_node.nil?
     letters = prefix.chars
@@ -100,4 +128,22 @@ end
 # #   end
 # #   complete_words
 # # end
+=======
+    # array_of_prefix = prefix.chars
+    # bingo = array_of_prefix.map do |element|
+    #   element.to_sym 
+    # end 
+      word = prefix
+      current_node = @root
+      bank = []
+    until current_node.complete_word == true 
+      binding.pry
+      current_node = current_node.next_node 
+      word += current_node.value  
+    #suggest
+    end
+    bank << word
+    #bingo
+    
+>>>>>>> 8b673b1aa1c7997e7d1da5131874b79846d670d9
   end

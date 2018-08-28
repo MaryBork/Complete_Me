@@ -14,6 +14,17 @@ class CompleteMeTest < Minitest::Test
     assert_instance_of CompleteMe, complete_me
   end
 
+<<<<<<< HEAD
+=======
+  def test_simple_insert
+    
+    complete_me = CompleteMe.new
+
+    complete_me.insert("pizza")
+    assert_equal 1, complete_me.count
+  end
+
+>>>>>>> 8b673b1aa1c7997e7d1da5131874b79846d670d9
   def test_it_has_empty_root
     complete_me = CompleteMe.new
 
@@ -37,6 +48,7 @@ class CompleteMeTest < Minitest::Test
     assert_equal 1, complete_me.count
   end
 
+<<<<<<< HEAD
   def test_populate
     completion = CompleteMe.new
     completion.populate(dictionary = File.read("/usr/share/dict/words"))
@@ -47,9 +59,34 @@ class CompleteMeTest < Minitest::Test
     completion = CompleteMe.new
     completion.populate(File.read("/usr/share/dict/words"))
     completion.insert("pizza")
+=======
+  def test_dictionary_count
+    skip 
+    complete_me = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    complete_me.populate(dictionary)
+
+    assert_equal 235886, complete_me.count
+  end
+
+  def test_single_suggest
+    
+    complete_me = CompleteMe.new
+    complete_me.insert("pizza")
+
+    assert_equal ["pizza"], complete_me.suggest("piz")
+  end
+
+  def test_suggest
+    skip
+    complete_me = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    complete_me.populate(dictionary)
+>>>>>>> 8b673b1aa1c7997e7d1da5131874b79846d670d9
     expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
     assert_equal expected, completion.suggest("piz")
   end
+<<<<<<< HEAD
 #
 #   #def test_insert
 #
@@ -88,3 +125,10 @@ class CompleteMeTest < Minitest::Test
 #
 #
  end
+=======
+
+
+end
+
+ 
+>>>>>>> 8b673b1aa1c7997e7d1da5131874b79846d670d9
