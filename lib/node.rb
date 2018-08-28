@@ -25,4 +25,4 @@ class Node
 end
 
 
-
+# @root.child(:p).child(:i).child(:z).child(:z).child(:a)
