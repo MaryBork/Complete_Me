@@ -11,7 +11,7 @@ class NodeTest < Minitest::Test
 
   def test_it_has_value
     node = Node.new("a")
-    
+
     assert_equal "a", node.value
   end
 
@@ -59,8 +59,7 @@ class NodeTest < Minitest::Test
   def test_non_word_node_can_be_set_as_word_node
     node = Node.new("a")
     node.complete_word = true
-    
+
     assert node.complete_word?
   end
 end
-
