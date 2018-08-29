@@ -11,8 +11,8 @@ class Node
     @complete_word = complete_word
   end
 
-  def set_children(value, node)
-    @children[value.to_sym] = node
+  def set_children(key, node)
+    @children[key.to_sym] = node
   end
 
   def child(key)
