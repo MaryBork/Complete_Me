@@ -34,11 +34,10 @@ class CompleteMeTest < Minitest::Test
     hash = {}
 
     assert_equal hash, complete_me.selections
-    assert_equal hash, complete_me.selections[:letter]
-    assert_equal 0, complete_me.selections[:letter][:letter]
   end
 
   def test_real_insert
+    skip
   
     complete_me = CompleteMe.new
     complete_me.insert("pizza")
@@ -54,7 +53,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_dictionary_count
-   
+   skip
     complete_me = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     complete_me.populate(dictionary)
@@ -63,7 +62,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_single_suggest
-    
     complete_me = CompleteMe.new
     complete_me.insert("pizza")
 
@@ -71,7 +69,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_suggest
-    
+    skip
     complete_me = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     complete_me.populate(dictionary)
@@ -79,7 +77,23 @@ class CompleteMeTest < Minitest::Test
 
     assert_equal expected, complete_me.suggest("piz")
   end
+  
+  def test_it_can_select
+    
+    complete_me = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")    
+    complete_me.populate(dictionary)
+    complete_me.select("piz", "pizzeria")
+    complete_me.select("piz", "pizzeria")
+    complete_me.select("piz", "pizzeria")
+    complete_me.select("pi", "pizza")
+    complete_me.select("pi", "pizza")
+    complete_me.select("pi", "pizzicato")
+    #selection adds to weight somehow then sorts the suggested array
 
+    expected = ["pizzeria", "pize", "pizza", "pizzicato", "pizzle"]
+    assert_equal expected, complete_me.suggest("piz")
+  end
 
 end
 

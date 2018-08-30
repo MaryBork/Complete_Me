@@ -6,9 +6,7 @@ class CompleteMe
                   :selections
   def initialize
     @root = Node.new(nil)
-    @selections = Hash.new do |hash, key|
-      hash[key] = Hash.new(0)
-    end
+    @selections = {}
   end
 
   def insert(complete_word, current = @root)
@@ -52,16 +50,37 @@ class CompleteMe
       node.children.each do |key, next_node|
       array += suggest(prefix, word + key.to_s, next_node)
     end
-    
+  
     if 
       node.complete_word == true
       array << word
     end
       array
+
     else
       next_prefix = prefix.clone.chars
       next_prefix.shift
       suggest(next_prefix.join, word + prefix[0], node.children[prefix[0].to_sym])
-    end
+    end  
   end
+  
+    def weigh_selections(prefix, selection)
+        weighted_array = suggest(prefix)
+        @selections[prefix] = {}
+        weighted_array.each do |suggestion|
+          @selections[prefix][suggestion] = 0
+        end
+        if
+         @selections[prefix][selection] += 1
+        end
+      end
+
+    def select(prefix, selection)
+      if @selections.key?(prefix)
+        @selections[prefix][selection] >= 1
+      else
+        weigh_selections(prefix, selection)
+      end
+    end
 end
+

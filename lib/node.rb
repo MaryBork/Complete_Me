@@ -2,13 +2,15 @@
 class Node
   attr_reader :value,
               :children,
-              :child
+              :child,
+              :weight
   attr_accessor :complete_word
 
   def initialize(value, complete_word = false)
     @value = value
     @children = Hash.new(nil)
     @complete_word = complete_word
+    @weight = 0
   end
 
   def set_children(key, node)
